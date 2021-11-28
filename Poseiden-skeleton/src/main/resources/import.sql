@@ -1,0 +1,2 @@
+INSERT INTO users (id, fullname, password, role, username) VALUES (nextval('users_id_sequence'), 'Administrator', '$2a$10$.NSIwXrQoaSy1SFwJH3O2eUUho4FS8xOpiM94K3Cx5JrRkpmVSJoi', 'ADMIN', 'admin');
+INSERT INTO users (id, fullname, password, role, username) values(nextval('users_id_sequence'), 'User', '$2a$10$.NSIwXrQoaSy1SFwJH3O2eUUho4FS8xOpiM94K3Cx5JrRkpmVSJoi', 'USER', 'user')
