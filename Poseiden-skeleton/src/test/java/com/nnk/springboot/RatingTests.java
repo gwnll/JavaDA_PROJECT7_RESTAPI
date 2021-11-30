@@ -2,6 +2,7 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.domain.Rating;
 import com.nnk.springboot.repositories.RatingRepository;
+import org.apache.commons.collections4.IterableUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +35,7 @@ public class RatingTests {
 		Assert.assertTrue(rating.getOrderNumber() == 20);
 
 		// Find
-		List<Rating> listResult = ratingRepository.findAll();
+		List<Rating> listResult = IterableUtils.toList(ratingRepository.findAll());
 		Assert.assertTrue(listResult.size() > 0);
 
 		// Delete

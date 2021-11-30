@@ -2,6 +2,7 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.repositories.RuleNameRepository;
+import org.apache.commons.collections4.IterableUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +35,7 @@ public class RuleTests {
 		Assert.assertTrue(rule.getName().equals("Rule Name Update"));
 
 		// Find
-		List<RuleName> listResult = ruleNameRepository.findAll();
+		List<RuleName> listResult = IterableUtils.toList(ruleNameRepository.findAll());
 		Assert.assertTrue(listResult.size() > 0);
 
 		// Delete
