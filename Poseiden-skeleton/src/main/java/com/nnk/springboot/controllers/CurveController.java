@@ -1,9 +1,11 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.CurvePoint;
+import com.nnk.springboot.domain.User;
 import com.nnk.springboot.services.CurveService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,8 +26,8 @@ public class CurveController {
     CurveService curveService;
 
     @RequestMapping("/curvePoint/list")
-    public String home(Model model, Principal principal) {
-        model.addAttribute("username", PrincipalUtils.getUsername(principal));
+    public String home(Model model, Principal principal, @AuthenticationPrincipal User user) {
+        model.addAttribute("username", PrincipalUtils.getUsername(principal, user));
         model.addAttribute("curvePoints", curveService.getCurvePoints());
         return "curvePoint/list";
     }
