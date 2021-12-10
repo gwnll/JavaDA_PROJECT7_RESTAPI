@@ -29,7 +29,7 @@ public class Rating {
     private String fitchRating;
 
     @Column(name = "order_number")
-    private int orderNumber;
+    private Integer orderNumber;
 
     public Rating() {
 

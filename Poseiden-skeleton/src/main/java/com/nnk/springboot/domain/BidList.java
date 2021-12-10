@@ -15,7 +15,7 @@ public class BidList {
     @Column(name = "bid_list_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bidlist_generator")
     @SequenceGenerator(name = "bidlist_generator", sequenceName = "bidlist_id_sequence")
-    private int bidListId;
+    private Integer bidListId;
 
     @Column(name = "account")
     @NotBlank(message = "Account is mandatory")
@@ -26,16 +26,16 @@ public class BidList {
     private String type;
 
     @Column(name = "bid_quantity")
-    private double bidQuantity;
+    private Double bidQuantity;
 
     @Column(name = "ask_quantity")
-    private double askQuantity;
+    private Double askQuantity;
 
     @Column(name = "bid")
-    private double bid;
+    private Double bid;
 
     @Column(name = "ask")
-    private double ask;
+    private Double ask;
 
     @Column(name = "benchmark")
     private String benchmark;
