@@ -1,2 +1,10 @@
 INSERT INTO users (id, fullname, password, role, username) VALUES (nextval('users_id_sequence'), 'Administrator', '$2a$10$.NSIwXrQoaSy1SFwJH3O2eUUho4FS8xOpiM94K3Cx5JrRkpmVSJoi', 'ADMIN', 'admin');
-INSERT INTO users (id, fullname, password, role, username) values(nextval('users_id_sequence'), 'User', '$2a$10$.NSIwXrQoaSy1SFwJH3O2eUUho4FS8xOpiM94K3Cx5JrRkpmVSJoi', 'USER', 'user')
+INSERT INTO users (id, fullname, password, role, username) values(nextval('users_id_sequence'), 'User', '$2a$10$.NSIwXrQoaSy1SFwJH3O2eUUho4FS8xOpiM94K3Cx5JrRkpmVSJoi', 'USER', 'user');
+INSERT INTO bidlist (bid_list_id, account, type, bid_quantity) VALUES (20,'Compte', 'Type', 32);
+INSERT INTO bidlist (bid_list_id, account, type, bid_quantity) VALUES (30,'Compte', 'Type', 33);
+INSERT INTO curvepoint (id, curve_id, term, value) VALUES (5, 10, 15, 20);
+INSERT INTO curvepoint (id, curve_id, term, value) VALUES (6, 16, 31, 65);
+INSERT INTO rating (id, moodys_rating, sand_p_rating, fitch_rating) VALUES (40, 'moodysRating', 'sandPRating', 'fitchRating');
+INSERT INTO rating (id, moodys_rating, sand_p_rating, fitch_rating) VALUES (50, 'moodysRating', 'sandPRating', 'fitchRating');
+INSERT into rulename (id, name, description, json, template, sql_str, sql_part) VALUES (60, 'name', 'description', 'json', 'template', 'sqlStr', 'sqlPart');
+INSERT into rulename (id, name, description, json, template, sql_str, sql_part) VALUES (70, 'name', 'description', 'json', 'template', 'sqlStr', 'sqlPart');
