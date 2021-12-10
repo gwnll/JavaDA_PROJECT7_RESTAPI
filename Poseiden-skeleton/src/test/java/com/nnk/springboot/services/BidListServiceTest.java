@@ -3,7 +3,6 @@ package com.nnk.springboot.services;
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
 import org.apache.commons.collections4.IterableUtils;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,23 +18,30 @@ import java.util.Optional;
 public class BidListServiceTest {
 
     @Autowired
-    private BidListRepository bidListRepository;
+    BidListService bidListService;
 
     @Autowired
-    private BidListService bidListService;
-
-
+    BidListRepository bidListRepository;
 
     @Test
-    public void getBidListsTest() {
-        BidList bidListTest = new BidList("Account Test", "Type Test", 10d);
-        List<BidList> bidList = IterableUtils.toList(bidListService.getBidLists());
-        Assert.assertTrue(bidList.size() > 0);
+    public void getbidListsTest() {
+        BidList bidListTest = new BidList("Compte Lists", "Type", 15);
+        bidListRepository.save(bidListTest);
+        List<BidList> bidListList = IterableUtils.toList(bidListService.getBidLists());
+        Assert.assertTrue(bidListList.size() > 0);
     }
 
     @Test
-    public void addBidTest() {
-        BidList bidListTest = new BidList("Account Test", "Type Test", 10d);
+    public void getbidListByIdTest() {
+        BidList bidListTest = new BidList("Compte ById", "Type", 15);
+        bidListTest.setBidListId(3);
+        bidListService.addBid(bidListTest);
+        Assert.assertNotNull(bidListService.getBidById(3));
+    }
+
+    @Test
+    public void addbidListTest() {
+        BidList bidListTest = new BidList("Compte Add", "Type", 15);
         List<BidList> bidListBefore = IterableUtils.toList(bidListRepository.findAll());
         bidListService.addBid(bidListTest);
         List<BidList> bidListAfter = IterableUtils.toList(bidListRepository.findAll());
@@ -43,11 +49,18 @@ public class BidListServiceTest {
     }
 
     @Test
+    public void updateTest() {
+        BidList bidListTest = bidListService.getBidById(20).orElseThrow(IllegalArgumentException::new);
+        bidListTest.setBid(14.0);
+        bidListService.update(bidListTest);
+        BidList bidListUpdated = bidListService.getBidById(20).orElseThrow(IllegalArgumentException::new);
+        Assert.assertEquals(bidListTest, bidListUpdated);
+    }
+
+    @Test
     public void deleteByIdTest() {
-        BidList bidListTest = new BidList("Account Test", "Type Test", 10d);
-        bidListTest.setBidListId(3);
-        Integer bidListId = bidListTest.getBidListId();
-        bidListService.deleteById(bidListId);
-        Assert.assertFalse(IterableUtils.toList(bidListService.getBidLists()).size() > 0);
+        bidListService.deleteById(30);
+        Optional<BidList> test = bidListService.getBidById(30);
+        Assert.assertFalse(test.isPresent());
     }
 }
