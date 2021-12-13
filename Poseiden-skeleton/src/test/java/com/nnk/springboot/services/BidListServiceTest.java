@@ -1,5 +1,6 @@
 package com.nnk.springboot.services;
 
+import com.nnk.springboot.ApplicationTest;
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
 import org.apache.commons.collections4.IterableUtils;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {ApplicationTest.class})
 public class BidListServiceTest {
 
     @Autowired

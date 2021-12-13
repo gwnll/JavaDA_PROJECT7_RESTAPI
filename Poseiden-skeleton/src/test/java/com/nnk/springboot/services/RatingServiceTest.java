@@ -1,5 +1,6 @@
 package com.nnk.springboot.services;
 
+import com.nnk.springboot.ApplicationTest;
 import com.nnk.springboot.domain.Rating;
 import com.nnk.springboot.repositories.RatingRepository;
 import org.apache.commons.collections4.IterableUtils;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {ApplicationTest.class})
 public class RatingServiceTest {
 
     @Autowired
@@ -24,7 +25,7 @@ public class RatingServiceTest {
     RatingRepository ratingRepository;
 
     @Test
-    public void getratingsTest() {
+    public void getRatingsTest() {
         Rating ratingTest = new Rating("moodysRating", "sandPRating", "fitchRating", 65);
         ratingRepository.save(ratingTest);
         List<Rating> ratingList = IterableUtils.toList(ratingService.getRatings());
@@ -32,7 +33,7 @@ public class RatingServiceTest {
     }
 
     @Test
-    public void getratingByIdTest() {
+    public void getRatingByIdTest() {
         Rating ratingTest = new Rating("moodysRating", "sandPRating", "fitchRating", 65);
         ratingTest.setId(3);
         ratingService.addRating(ratingTest);
@@ -40,7 +41,7 @@ public class RatingServiceTest {
     }
 
     @Test
-    public void addratingTest() {
+    public void addRatingTest() {
         Rating ratingTest = new Rating("moodysRating", "sandPRating", "fitchRating", 65);
         List<Rating> ratingBefore = IterableUtils.toList(ratingRepository.findAll());
         ratingService.addRating(ratingTest);
