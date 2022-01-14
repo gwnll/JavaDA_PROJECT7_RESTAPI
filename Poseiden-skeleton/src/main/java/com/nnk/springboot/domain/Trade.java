@@ -16,7 +16,7 @@ public class Trade {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trade_generator")
     @SequenceGenerator(name = "trade_generator", sequenceName = "trade_id_sequence")
-    private int id;
+    private Integer id;
 
     @Column(name = "account")
     @NotBlank(message = "Account is mandatory")
@@ -28,16 +28,16 @@ public class Trade {
 
     @Column(name = "buy_quantity")
     @NotNull(message = "Buy quantity is mandatory")
-    private double buyQuantity;
+    private Double buyQuantity;
 
     @Column(name = "sell_quantity")
-    private double sellQuantity;
+    private Double sellQuantity;
 
     @Column(name = "buy_price")
-    private double buyPrice;
+    private Double buyPrice;
 
     @Column(name = "sell_price")
-    private double sellPrice;
+    private Double sellPrice;
 
     @Column(name = "benchmark")
     private String benchmark;
@@ -85,9 +85,10 @@ public class Trade {
 
     }
 
-    public Trade(String account, String type) {
+    public Trade(String account, String type, Double buyQuantity) {
         this.account = account;
         this.type = type;
+        this.buyQuantity = buyQuantity;
     }
 
 }

@@ -8,3 +8,5 @@ INSERT INTO rating (id, moodys_rating, sand_p_rating, fitch_rating) VALUES (40, 
 INSERT INTO rating (id, moodys_rating, sand_p_rating, fitch_rating) VALUES (50, 'moodysRating', 'sandPRating', 'fitchRating');
 INSERT into rulename (id, name, description, json, template, sql_str, sql_part) VALUES (60, 'name', 'description', 'json', 'template', 'sqlStr', 'sqlPart');
 INSERT into rulename (id, name, description, json, template, sql_str, sql_part) VALUES (70, 'name', 'description', 'json', 'template', 'sqlStr', 'sqlPart');
+INSERT into trade (id, account, type, buy_quantity) VALUES (80, 'account', 'type', '15');
+INSERT into trade (id, account, type, buy_quantity) VALUES (90, 'account', 'type', '20');
